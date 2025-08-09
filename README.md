@@ -6,4 +6,5 @@ Project Aim: This project seeks to address the problem by developing FINDIT, a L
 
 Team Members 
 Vaishnavi Gunjikar - https://github.com/vaishugunjikar29
+
 Vasaf Totagatti    - https://github.com/vasaf12345
