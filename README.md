@@ -13,6 +13,6 @@ Vasaf Totagatti    - https://github.com/vasaf123
 
 Mohammed-wasiq     - https://github.com/Mohammed-wasiq
 
-Vedant            - https://github.com/account
+Vedant            - https://github.com/Vedant-1881
 
 Tech Stack -( "TBD" for now").
