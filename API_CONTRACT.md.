@@ -1,1 +1,146 @@
+# API_CONTRACT.md â€“ FINDIT (Lost & Found Website)
 
+## Data Models
+
+### User
+```json
+{
+  "id": 1,
+  "username": "john_doe",
+  "email": "john@example.com",
+  "phone": "+91-9876543210"
+}
+```
+
+### Item
+```json
+{
+  "id": 101,
+  "title": "Black Leather Wallet",
+  "description": "Contains ID cards and cash",
+  "category": "Wallet",
+  "status": "Lost",
+  "date": "2025-08-05",
+  "location": "Mumbai Central Station",
+  "image_url": "https://example.com/wallet.jpg",
+  "posted_by": 1
+}
+```
+
+---
+
+## API Endpoints
+
+### 1. Get All Items
+- **Feature:** Get a list of all lost and found items  
+- **HTTP Method:** `GET`  
+- **Endpoint Path:** `/api/items`  
+- **Description:** Retrieves a list of all items (both lost and found).  
+- **Success Response (200 OK):**
+```json
+[
+  {
+    "id": 101,
+    "title": "Black Leather Wallet",
+    "category": "Wallet",
+    "status": "Lost",
+    "date": "2025-08-05",
+    "location": "Mumbai Central Station"
+  }
+]
+```
+- **Error Response (404 Not Found):**
+```json
+{ "error": "No items found" }
+```
+
+---
+
+### 2. Get Item by ID
+- **Feature:** Get details of a specific item  
+- **HTTP Method:** `GET`  
+- **Endpoint Path:** `/api/items/{id}`  
+- **Description:** Retrieves detailed information about a specific lost/found item.  
+- **Success Response (200 OK):**
+```json
+{
+  "id": 101,
+  "title": "Black Leather Wallet",
+  "description": "Contains ID cards and cash",
+  "category": "Wallet",
+  "status": "Lost",
+  "date": "2025-08-05",
+  "location": "Mumbai Central Station",
+  "image_url": "https://example.com/wallet.jpg",
+  "posted_by": 1
+}
+```
+- **Error Response (404 Not Found):**
+```json
+{ "error": "Item not found" }
+```
+
+---
+
+### 3. Post New Item
+- **Feature:** Post a new lost or found item  
+- **HTTP Method:** `POST`  
+- **Endpoint Path:** `/api/items`  
+- **Description:** Allows a user to submit a new lost/found item entry.  
+- **Request Body:**
+```json
+{
+  "title": "Black Leather Wallet",
+  "description": "Contains ID cards and cash",
+  "category": "Wallet",
+  "status": "Lost",
+  "date": "2025-08-05",
+  "location": "Mumbai Central Station",
+  "image_url": "https://example.com/wallet.jpg",
+  "posted_by": 1
+}
+```
+- **Success Response (201 Created):**
+```json
+{ "message": "Item posted successfully", "item_id": 101 }
+```
+- **Error Response (400 Bad Request):**
+```json
+{ "error": "Invalid item data" }
+```
+
+---
+
+### 4. Update Item Status
+- **Feature:** Update the status of an item (e.g., Lost â†’ Found)  
+- **HTTP Method:** `PUT`  
+- **Endpoint Path:** `/api/items/{id}`  
+- **Description:** Changes the status of a posted item.  
+- **Request Body:**
+```json
+{ "status": "Found" }
+```
+- **Success Response (200 OK):**
+```json
+{ "message": "Item status updated successfully" }
+```
+- **Error Response (404 Not Found):**
+```json
+{ "error": "Item not found" }
+```
+
+---
+
+### 5. Delete an Item
+- **Feature:** Remove a lost/found item post  
+- **HTTP Method:** `DELETE`  
+- **Endpoint Path:** `/api/items/{id}`  
+- **Description:** Deletes an item post by ID.  
+- **Success Response (200 OK):**
+```json
+{ "message": "Item deleted successfully" }
+```
+- **Error Response (404 Not Found):**
+```json
+{ "error": "Item not found" }
+```
