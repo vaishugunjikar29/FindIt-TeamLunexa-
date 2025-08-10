@@ -8,5 +8,8 @@ Team Members
 
 Vaishnavi Gunjikar - https://github.com/vaishugunjikar29
 
-Vasaf Totagatti    - https://github.com/vasaf12345
+Vasaf Totagatti    - https://github.com/vasaf123
 
+Mohammed-wasiq     - https://github.com/Mohammed-wasiq
+
+Vedant            - https://github.com/account
