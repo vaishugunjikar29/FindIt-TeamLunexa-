@@ -1,8 +1,13 @@
-# API_CONTRACT.md â€“ FINDIT (Lost & Found Website)
+**Base URL** (local):
+```
+http://localhost:5000/api
+```
+
+---
 
 ## Data Models
 
-### User
+### User (placeholder)
 ```json
 {
   "id": 1,
@@ -25,8 +30,9 @@
   "image_url": "https://example.com/wallet.jpg",
   "posted_by": 1
 }
-### **Report**
+```
 
+### Report (placeholder)
 ```json
 {
   "id": 501,
@@ -39,8 +45,8 @@
   "created_at": "2025-08-05T10:30:00Z"
 }
 ```
-### **Notification**
 
+### Notification (placeholder)
 ```json
 {
   "id": 301,
@@ -50,8 +56,8 @@
   "created_at": "2025-08-06T15:45:00Z"
 }
 ```
-### **Comment**
 
+### Comment (placeholder)
 ```json
 {
   "id": 201,
@@ -60,15 +66,19 @@
   "posted_by": 2,
   "created_at": "2025-08-05T14:20:00Z"
 }
+```
 
-## API Endpoints
+> Note: The backend currently implements only the **Item** endpoints and stores Item objects in-memory. User/Report/Notification/Comment are documented for future use.
+
+---
+
+## API Endpoints (implemented)
 
 ### 1. Get All Items
-- **Feature:** Get a list of all lost and found items  
-- **HTTP Method:** `GET`  
-- **Endpoint Path:** `/api/items`  
-- **Description:** Retrieves a list of all items (both lost and found).  
-- **Success Response (200 OK):**
+- **Method:** `GET`
+- **Path:** `/api/items`
+- **Description:** Returns a compact list of all items. Each entry includes: `id`, `title`, `category`, `status`, `date`, `location`.
+- **Success (200):**
 ```json
 [
   {
@@ -81,7 +91,7 @@
   }
 ]
 ```
-- **Error Response (404 Not Found):**
+- **Error (404) — when no items:**
 ```json
 { "error": "No items found" }
 ```
@@ -89,11 +99,10 @@
 ---
 
 ### 2. Get Item by ID
-- **Feature:** Get details of a specific item  
-- **HTTP Method:** `GET`  
-- **Endpoint Path:** `/api/items/{id}`  
-- **Description:** Retrieves detailed information about a specific lost/found item.  
-- **Success Response (200 OK):**
+- **Method:** `GET`
+- **Path:** `/api/items/{id}`
+- **Description:** Retrieves full details of a specific item.
+- **Success (200):**
 ```json
 {
   "id": 101,
@@ -107,7 +116,7 @@
   "posted_by": 1
 }
 ```
-- **Error Response (404 Not Found):**
+- **Error (404):**
 ```json
 { "error": "Item not found" }
 ```
@@ -115,48 +124,53 @@
 ---
 
 ### 3. Post New Item
-- **Feature:** Post a new lost or found item  
-- **HTTP Method:** `POST`  
-- **Endpoint Path:** `/api/items`  
-- **Description:** Allows a user to submit a new lost/found item entry.  
-- **Request Body:**
+- **Method:** `POST`
+- **Path:** `/api/items`
+- **Description:** Create a new lost/found item.
+- **Request body (required):**
 ```json
 {
   "title": "Black Leather Wallet",
-  "description": "Contains ID cards and cash",
+  "description": "Contains ID cards and cash",    // optional
   "category": "Wallet",
   "status": "Lost",
   "date": "2025-08-05",
   "location": "Mumbai Central Station",
-  "image_url": "https://example.com/wallet.jpg",
+  "image_url": "https://example.com/wallet.jpg", // optional
   "posted_by": 1
 }
 ```
-- **Success Response (201 Created):**
+- **Success (201):**
 ```json
 { "message": "Item posted successfully", "item_id": 101 }
 ```
-- **Error Response (400 Bad Request):**
+- **Error (400) — missing required fields:**
 ```json
 { "error": "Invalid item data" }
 ```
 
+**Validation rule:** `title`, `category`, `status`, `date`, `location`, and `posted_by` are required.
+
 ---
 
 ### 4. Update Item Status
-- **Feature:** Update the status of an item (e.g., Lost â†’ Found)  
-- **HTTP Method:** `PUT`  
-- **Endpoint Path:** `/api/items/{id}`  
-- **Description:** Changes the status of a posted item.  
-- **Request Body:**
+- **Method:** `PUT`
+- **Path:** `/api/items/{id}`
+- **Description:** Update only the `status` of the item.
+- **Request body:**
 ```json
 { "status": "Found" }
 ```
-- **Success Response (200 OK):**
+- **Success (200):**
 ```json
 { "message": "Item status updated successfully" }
 ```
-- **Error Response (404 Not Found):**
+- **Errors:**
+- `400 Bad Request` if `status` missing:
+```json
+{ "error": "Invalid item data" }
+```
+- `404 Not Found` if item does not exist:
 ```json
 { "error": "Item not found" }
 ```
@@ -164,15 +178,34 @@
 ---
 
 ### 5. Delete an Item
-- **Feature:** Remove a lost/found item post  
-- **HTTP Method:** `DELETE`  
-- **Endpoint Path:** `/api/items/{id}`  
-- **Description:** Deletes an item post by ID.  
-- **Success Response (200 OK):**
+- **Method:** `DELETE`
+- **Path:** `/api/items/{id}`
+- **Description:** Delete an item by ID.
+- **Success (200):**
 ```json
 { "message": "Item deleted successfully" }
 ```
-- **Error Response (404 Not Found):**
+- **Error (404):**
 ```json
 { "error": "Item not found" }
 ```
+
+---
+
+## Swagger / Docs
+- **URL:** `http://localhost:5000/api-docs`
+- The backend exposes Swagger UI generated from route annotations matching these request/response shapes.
+
+---
+
+## Implementation notes
+- Data is stored in-memory (array). Restarting the server clears all items.
+- The `/api/items` GET returns a compact list as described above.
+- Only `Item` endpoints are implemented in this version.
+
+---
+
+## Next steps
+- Add a seeded sample item (so `GET /api/items` returns data immediately) — recommended for demos.
+- Implement the User/Report/Notification/Comment endpoints if you want a fuller prototype.
+- I can create a pull request with this exact file to your GitHub if you provide repo access or a branch name.
