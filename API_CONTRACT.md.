@@ -198,14 +198,4 @@ http://localhost:5000/api
 
 ---
 
-## Implementation notes
-- Data is stored in-memory (array). Restarting the server clears all items.
-- The `/api/items` GET returns a compact list as described above.
-- Only `Item` endpoints are implemented in this version.
 
----
-
-## Next steps
-- Add a seeded sample item (so `GET /api/items` returns data immediately) — recommended for demos.
-- Implement the User/Report/Notification/Comment endpoints if you want a fuller prototype.
-- I can create a pull request with this exact file to your GitHub if you provide repo access or a branch name.
