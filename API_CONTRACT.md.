@@ -1,3 +1,8 @@
+# API_CONTRACT.md – FINDIT (Lost & Found Website)
+
+## Overview
+This document describes the API contract for FINDIT.
+
 **Base URL** (local):
 ```
 http://localhost:5000/api
