@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "type": "lost",
+    "title": "Lost black wallet",
+    "description": "Black leather wallet with a silver logo. Contains ID and some cards.",
+    "category": "Wallet",
+    "date": "2025-08-10",
+    "location": "Main Library",
+    "image": "https://images.unsplash.com/photo-1593672715438-d88a70629abe?w=900"
+  },
+  {
+    "id": 2,
+    "type": "found",
+    "title": "Found iPhone near cafeteria",
+    "description": "White iPhone with clear case. Screen intact, passcode locked.",
+    "category": "Electronics",
+    "date": "2025-08-12",
+    "location": "North Cafeteria",
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900"
+  },
+  {
+    "id": 3,
+    "type": "lost",
+    "title": "Keychain with 3 keys",
+    "description": "Small black keychain, one key has a red plastic cover.",
+    "category": "Keys",
+    "date": "2025-08-08",
+    "location": "Parking Lot B",
+    "image": "https://images.unsplash.com/photo-1518558401347-2d2b9f82d6f6?w=900"
+  },
+  {
+    "id": 4,
+    "type": "found",
+    "title": "College ID card (Vedant)",
+    "description": "Blue lanyard attached. Found near the auditorium.",
+    "category": "ID Card",
+    "date": "2025-08-11",
+    "location": "Auditorium",
+    "image": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=900"
+  }
+]
